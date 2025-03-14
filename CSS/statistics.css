@@ -1,0 +1,126 @@
+:root {
+    --grey: rgb(102, 102, 102);
+
+    --dark-green: rgb(0, 124, 0);
+    --green: rgb(61, 235, 61);
+    --light-green: lightgreen;
+
+    --dark-red: rgb(206, 37, 7);
+    --red: tomato;
+    --light-red: rgb(255, 135, 135);
+}
+
+@keyframes showStatistics {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.statistics-container {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    animation: showStatistics 0.8s ease;
+    backdrop-filter: blur(30px);
+    position: absolute;
+    opacity: 1;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+}
+
+.congratulation {
+    color: var(--grey);
+    font-size: 3rem;
+    text-align: center;
+}
+
+.graph {
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: row;
+}
+
+#right-rect {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    color: var(--dark-green);
+    font-size: 1.5rem;
+    border-radius: 0.6rem 0 0 0.6rem;
+    background-color: var(--green);
+    height: 100%;
+    width: 80%;
+}
+
+#wrong-rect {
+    border-radius: 0 0.6rem 0.6rem 0;
+    background-color: var(--red);
+    height: 100%;
+    width: 20%;
+}
+
+.ratio-display {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.ratio-display p {
+    font-size: 1.2rem;
+}
+
+#right-number {
+    color: var(--dark-green);
+}
+
+#wrong-number {
+    color: var(--dark-red);
+}
+
+.spended-time {
+    color: var(--grey);
+    opacity: 0.9;
+    font-size: 1.4rem;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.buttons-container button {
+    font-size: 2rem;
+    padding: 8px 16px;
+    border-radius: 0.7rem;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#again-btn {
+    background-color: var(--green);
+    box-shadow: 0 3px 0 var(--dark-green);
+}
+
+#again-btn:hover {
+    background-color: var(--light-green);
+}
+
+#quit-btn {
+    background-color: var(--red);
+    box-shadow: 0 3px 0 var(--dark-red);
+}
+
+#quit-btn:hover {
+    background-color: var(--light-red);
+}

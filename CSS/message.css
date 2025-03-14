@@ -1,0 +1,59 @@
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(2rem);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-2rem);
+    }
+}
+
+:root {
+    --light-red: rgb(255, 197, 197); /*red*/
+    --red: rgb(255, 53, 53);
+
+    --light-green: rgb(219, 255, 219); /*green*/
+    --green: rgb(79, 244, 79);
+}
+
+.message {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    animation: appear 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    display: none;
+}
+
+span {
+    animation: slideDown 1s ease;
+    text-align: center;
+}
+
+#rigth-message {
+    background-color: var(--light-green);
+    color: var(--green);
+}
+
+#wrong-message {
+    background-color: var(--light-red);
+    color: var(--red);
+}

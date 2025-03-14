@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Random 20</title>
+    <link rel="stylesheet" href="./CSS/main.css">
+    <link rel="stylesheet" href="./CSS/message.css">
+    <link rel="stylesheet" href="./CSS/statistics.css">
+    <script src="./JS/script.js" type="module" defer></script>
+    <script src="./JS/answers.js" type="module" defer></script>
+    <script src="./JS/statistics.js" type="module" defer></script>
+    <script src="./JS/stopwatch.js" type="module" defer></script>
+</head>
+<body>
+    <div class="statistics-container">
+        <p class="congratulation"></p>
+        <div class="graph">
+            <div id="right-rect"></div>
+            <div id="wrong-rect"></div>
+        </div>
+        <div class="ratio-display">
+            <p id="right-number"></p>
+            <p id="wrong-number"></p>
+        </div>
+        <p class="spended-time"></p>
+        <div class="buttons-container">
+            <button id="again-btn">Пройти знову</button>
+            <button id="quit-btn">Вихід</button>
+        </div>
+    </div>
+    <div class="message"
+         id="rigth-message"><span>ПРАВИЛЬНО</span></div>
+    <div class="message"
+         id="wrong-message"><span>НЕПРАВИЛЬНО</span></div>
+    <div class="counters">
+        <p class="counter" id="right-counter">0</p>
+        <p class="counter" id="general-counter">Номер слова: 1</p>
+        <p class="counter" id="wrong-counter">0</p>
+    </div>
+    <div id="cell-container"></div>
+    <p id="description"></p>
+    <button id="button">Поставте наголос</button>
+    <p class="sound-btn">Аудіосупровід дозволено</p>
+</body>
+</html>
