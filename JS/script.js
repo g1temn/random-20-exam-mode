@@ -15,9 +15,9 @@ let delayTime = 200
 
 export let generalCounter = 1, rigthAnswersCounter = 0, wrongAnswersCounter = 0
 
-const rightSFX = new Audio, wrongSFX = new Audio //SFX
-wrongSFX.src = '../SFX/wrong.wav', rightSFX.src = '../SFX/correct.wav'
-rightSFX.volume = 0.3, wrongSFX.volume = 0.3 
+const rightSFX = new Audio, wrongSFX = new Audio, selectionSFX = new Audio //SFX
+wrongSFX.src = '../SFX/wrong.wav', rightSFX.src = '../SFX/correct.wav', selectionSFX.src = '../SFX/selection.wav'
+rightSFX.volume = 0.3, wrongSFX.volume = 0.3, selectionSFX.volume = 0.08
 
 //generate random number
 let randomNumber = Math.floor(Math.random() * answers.length)
@@ -29,6 +29,10 @@ let pickedWord = answers[randomNumber].word
 function handleCell(cells) {
     cells.forEach(cell => {
         cell.addEventListener('click', () => {
+            if(isSoundAllowed) {
+                selectionSFX.currentTime = 0
+                selectionSFX.play() //play short SFX
+            }
             cell.classList.toggle('selected')
             const anySelected = Array.from(cells).some(c => c.classList.contains('selected'))
             button.disabled = !anySelected
