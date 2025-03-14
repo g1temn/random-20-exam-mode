@@ -9,7 +9,7 @@ const wrongMessage = document.querySelector('#wrong-message')
 
 const soundBtn = document.querySelector('.sound-btn')
 
-export let isSoundAllowed = true
+export let isSoundAllowed = false
 
 let delayTime = 200
 
