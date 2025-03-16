@@ -131,6 +131,8 @@ button.addEventListener('click', () => {
 })
 
 soundBtn.addEventListener('click', () => {
+    selectionSFX.currentTime = 0
+    selectionSFX.play() //play short SFX
     soundBtn.classList.toggle('not-allowed')
     isSoundAllowed = !isSoundAllowed
 })
