@@ -15,23 +15,25 @@ let delayTime = 200
 
 export let generalCounter = 1, rigthAnswersCounter = 0, wrongAnswersCounter = 0
 
-const rightSFX = new Audio, wrongSFX = new Audio, selectionSFX = new Audio //SFX
-wrongSFX.src = '../SFX/wrong.wav', rightSFX.src = '../SFX/correct.wav', selectionSFX.src = '../SFX/selection.wav'
-rightSFX.volume = 0.3, wrongSFX.volume = 0.3, selectionSFX.volume = 0.08
-
 //generate random number
 let randomNumber = Math.floor(Math.random() * answers.length)
 
 //pick random word based on the index calculated above
 let pickedWord = answers[randomNumber].word
 
+export function playSound(name, volume) {
+    const sound = new Audio(`../SFX/${name}.wav`)
+    sound.currentTime = 0
+    sound.volume = volume
+    sound.play()
+}
+
 //handle each cell
 function handleCell(cells) {
     cells.forEach(cell => {
         cell.addEventListener('click', () => {
             if(isSoundAllowed) {
-                selectionSFX.currentTime = 0
-                selectionSFX.play() //play short SFX
+                playSound('selection', 0.08)
             }
             cell.classList.toggle('selected')
             const anySelected = Array.from(cells).some(c => c.classList.contains('selected'))
@@ -53,6 +55,9 @@ function displayWord() {
     description.innerHTML = answers[randomNumber].description
     for(let i = 0; i < pickedWord.length; i++) {
         setTimeout(() => {
+            if(isSoundAllowed) {
+                playSound('slide', 0.03)
+            }
             let char = document.createElement('div')
             char.classList = 'cell'
             char.innerHTML = pickedWord[i].toLowerCase()
@@ -98,16 +103,14 @@ function checkAnswer() {
         rigthAnswersCounter++
         document.querySelector('#right-counter').innerHTML = rigthAnswersCounter 
         if(isSoundAllowed) {
-            rightSFX.currentTime = 0
-            rightSFX.play()
+            playSound('correct', 0.3)
         }
         showMessage(rigthMessage)
     } else {
         wrongAnswersCounter++
         document.querySelector('#wrong-counter').innerHTML = wrongAnswersCounter
         if(isSoundAllowed) {
-            wrongSFX.currentTime = 0
-            wrongSFX.play()
+            playSound('wrong', 0.3)
         }
         showMessage(wrongMessage)
     }
@@ -131,8 +134,7 @@ button.addEventListener('click', () => {
 })
 
 soundBtn.addEventListener('click', () => {
-    selectionSFX.currentTime = 0
-    selectionSFX.play() //play short SFX
+    playSound('selection', 0.08)
     soundBtn.classList.toggle('not-allowed')
     isSoundAllowed = !isSoundAllowed
 })

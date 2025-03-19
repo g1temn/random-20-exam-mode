@@ -1,4 +1,4 @@
-import { generalCounter, rigthAnswersCounter, wrongAnswersCounter, button, isSoundAllowed } from "./script.js"
+import { generalCounter, rigthAnswersCounter, wrongAnswersCounter, button, isSoundAllowed, playSound } from "./script.js"
 import { currentTime } from "./stopwatch.js"
 
 const rigthRect = document.querySelector('#right-rect') //rectangles for
@@ -8,18 +8,14 @@ const congratulation = document.querySelector('.congratulation')
 
 function showStat() {
     if(isSoundAllowed) {
-        const appearingSFX = new Audio //play appropriate sound
-        appearingSFX.src = '../SFX/appearing.wav'
-        appearingSFX.currentTime = 0
-        appearingSFX.volume = 0.8
-        appearingSFX.play()
+        playSound('appearing', 0.3)
     }
-    const statisticsContainer = document.querySelector('.statistics-container')
-    statisticsContainer.style.display = 'flex' //show statistics container
+    
+    document.querySelector('.statistics-container').style.display = 'flex'
 
     //show how how many right and wrong answers user did
     document.querySelector('#right-number').innerHTML = `Правильно: ${rigthAnswersCounter}`
-    document.querySelector('#wrong-number').innerHTML = `Неравильно: ${wrongAnswersCounter}`
+    document.querySelector('#wrong-number').innerHTML = `Неправильно: ${wrongAnswersCounter}`
 
     //calculate width of rectangles in percents
     const rigthRectPercent = Math.round((rigthAnswersCounter / (generalCounter - 1)) * 100)

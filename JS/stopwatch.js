@@ -1,4 +1,3 @@
-const spendedTime = document.querySelector('.spended-time')
 let seconds = 0, minutes = 0, hours = 0
 export let currentTime
 
