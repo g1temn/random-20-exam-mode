@@ -22,7 +22,7 @@ let randomNumber = Math.floor(Math.random() * answers.length)
 let pickedWord = answers[randomNumber].word
 
 export function playSound(name, volume) {
-    const sound = new Audio(`../SFX/${name}.wav`)
+    const sound = document.querySelector(`#${name}`)
     sound.currentTime = 0
     sound.volume = volume
     sound.play()
